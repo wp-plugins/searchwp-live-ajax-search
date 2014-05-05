@@ -68,7 +68,9 @@ SearchWP Live Ajax Search uses a filter — <a href="https://searchwp.com/docs/
 == Screenshots ==
 
 1. SearchWP Live Ajax Search automagically working in Twenty Fourteen instantly after activating
-2. SearchWP Live Ajax Search Widget
+2. Search results with default 'theme' (can be completely (completely) customized)
+3. SearchWP Live Ajax Search Widget
+4. SearchWP Live Ajax Search Widget Advanced
 
 == Changelog ==
 
