@@ -21,15 +21,15 @@
 
 <?php if ( have_posts() ) : ?>
 	<?php while ( have_posts() ) : the_post(); ?>
-		<?php $post_type = get_post_type_object( get_post_type( get_the_ID() ) ); ?>
+		<?php $post_type = get_post_type_object( get_post_type() ); ?>
 		<div class="searchwp-live-search-result">
-			<p><a href="<?php echo get_permalink(); ?>">
-				<?php the_title(); ?> (<?php echo $post_type->labels->singular_name; ?>) &raquo;
+			<p><a href="<?php echo esc_url( get_permalink() ); ?>">
+				<?php the_title(); ?> (<?php echo esc_html( $post_type->labels->singular_name ); ?>) &raquo;
 			</a></p>
 		</div>
 	<?php endwhile; ?>
 <?php else : ?>
 	<p class="searchwp-live-search-no-results">
-		<em><?php _e( 'No search results found.', 'searchwp' ); ?></em>
+		<em><?php _ex( 'No results found.', 'search results' ); ?></em>
 	</p>
 <?php endif; ?>
