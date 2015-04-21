@@ -2,7 +2,7 @@
 Contributors: jchristopher
 Tags: search, live, ajax
 Requires at least: 3.9
-Tested up to: 3.9.1
+Tested up to: 4.2
 Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -59,7 +59,7 @@ By default, SearchWP Live Ajax Search uses the default SearchWP Search Engine if
 
 = How do I customize the results template =
 
-SearchWP Live Ajax Search uses a template loader. In the plugin folder you will find a `templates` folder which includes `search-results.php` — that is what's used out of the box to output search results. To customize that output, simply create a folder called `searchwp-live-search` **in your theme directory** and copy `search-results.php` into that folder. SearchWP Live Ajax Search will then *use that file* instead of the one that shipped with the plugin, and you can customize it as you would other theme template files.
+SearchWP Live Ajax Search uses a template loader. In the plugin folder you will find a `templates` folder which includes `search-results.php` — that is what's used out of the box to output search results. To customize that output, simply create a folder called `searchwp-live-ajax-search` **in your theme directory** and copy `search-results.php` into that folder. SearchWP Live Ajax Search will then *use that file* instead of the one that shipped with the plugin, and you can customize it as you would other theme template files.
 
 SearchWP Live Ajax Search also outputs two sets of styles. The primary set of styles simply preps the results wrapper to be positioned properly. The second set of styles controls the visual appearance. This abstraction was made to ensure customization is as straighforward as possible. You can disable the default 'theme' by dequeueing the applicable stylesheet, and you can also disable the foundational CSS as well. More information available in [the documentation](https://searchwp.com/docs/extensions/live-search/#customizing-results).
 
