@@ -2,8 +2,8 @@
 Contributors: jchristopher
 Tags: search, live, ajax
 Requires at least: 3.9
-Tested up to: 4.2
-Stable tag: 1.1
+Tested up to: 4.2.2
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,11 @@ SearchWP Live Ajax Search uses a filter — <a href="https://searchwp.com/docs/
 
 == Changelog ==
 
+= 1.1.1 =
+* Fixed an issue that prevented SearchWP Supplemental engines from showing up in the Widget config
+* Added French translation
+* Added Serbian translation
+
 = 1.1 =
 * Define default post statuses when using WordPress native search
 * New filter `searchwp_live_search_query_args` to manipulate query args before searches
@@ -103,6 +108,9 @@ SearchWP Live Ajax Search uses a filter — <a href="https://searchwp.com/docs/
 * Added escaping to permalink and post type name in the default results template (props justinsainton)
 * Utilize a WordPress core translated string instead of a custom one (props justinsainton)
 * Increase the priority for the get_search_form filter so as to accommodate existing filters
+
+= 1.0.2 =
+* Added Serbo-Croatian translation (props Andrijana Nikolic)
 
 = 1.0.1 =
 * Fixed a directory URL issue
