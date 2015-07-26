@@ -1,9 +1,7 @@
 <?php
 
 // exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Class SearchWP_Live_Search_Form

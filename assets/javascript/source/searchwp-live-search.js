@@ -8,7 +8,6 @@
 		this.input_el = element;        // the input element itself
 		this.results_id = null;         // the id attribute of the results wrapper for this search field
 		this.results_el = null;         // the results wrapper element itself
-        this.parent_el = null;          // allows results wrapper element to be injected into a custom parent element
 		this.results_showing = false;   // whether the results are showing
 		this.form_el = null;            // the search form element itself
 		this.timer = false;             // powers the delay check
@@ -16,7 +15,7 @@
 		this.spinner = null;            // the spinner
 		this.spinner_showing = false;   // whether the spinner is showing
 		this.has_results = false;       // whether results are showing
-		this.current_request = false;	// the current request in progress
+
 		// kick it off
 		this.init();
 	}
@@ -29,7 +28,6 @@
 			var self = this,
 				$input = this.input_el;
 			this.form_el = $input.parents('form:eq(0)');
-            this.results_id = this.uniqid('searchwp_live_search_results_');
 
 			// establish our config (e.g. allow developers to override the config based on the value of the swpconfig data attribute)
 			var valid_config = false;
@@ -66,29 +64,7 @@
 				$input.attr('autocomplete','off');
 
 				// set up and position the results container
-                var results_el_html = '<div class="searchwp-live-search-results" id="' + this.results_id + '"></div>';
-
-                // if parent_el was specified, inject the results el into it instead of appending it to the body
-                var swpparentel = $input.data('swpparentel');
-                if (swpparentel) {
-
-                    // specified as a data property on the html input.
-                    this.parent_el = $(swpparentel);
-                    this.parent_el.html(results_el_html);
-
-                } else if (this.config.parent_el) {
-
-                    // specified by the config set in php
-                    this.parent_el = $(this.config.parent_el);
-                    this.parent_el.html(results_el_html);
-
-                } else {
-
-                    // no parent, just append to the body
-                    $('body').append($(results_el_html));
-
-                }
-
+				$('body').append($('<div class="searchwp-live-search-results" id="' + this.results_id + '"></div>'));
 				this.results_el = $('#'+this.results_id);
 				this.position_results();
 				$(window).resize(function(){
@@ -102,10 +78,6 @@
 
 				// bind to keyup
 				$input.keyup(function(){
-					// is there already a request active?
-					if( self.current_request ){
-						self.current_request.abort();
-					}					
 					if(!$.trim(self.input_el.val()).length) {
 						self.destroy_results();
 					}
@@ -142,11 +114,6 @@
 				input_offset = $input.offset(),
 				$results = this.results_el,
 				results_top_offset = 0;
-
-            // don't try to position a results element when the input field is hidden
-            if ($input.is(":hidden")) {
-                return;
-            }
 
 			// check for an offset
 			input_offset.left += parseInt(this.config.results.offset.x,10);
@@ -220,15 +187,14 @@
 
 			this.last_string = $input.val();
 			this.has_results = true;
-			// put the request into the current_request var
-			this.current_request = $.ajax({
+
+			$.ajax({
 				url: searchwp_live_search_params.ajaxurl,
 				type: "POST",
 				data: values,
 				complete: function(){
 					self.spinner_showing = false;
 					self.hide_spinner();
-					this.current_request = false;
 				},
 				success: function(response){
 					if(response === 0){
@@ -236,6 +202,7 @@
 					}
 					self.position_results();
 					$results.html(response);
+
 				}
 			});
 		},
