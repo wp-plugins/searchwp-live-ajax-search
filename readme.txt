@@ -2,8 +2,8 @@
 Contributors: jchristopher
 Tags: search, live, ajax
 Requires at least: 3.9
-Tested up to: 3.9.1
-Stable tag: 1.1
+Tested up to: 4.2.3
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,7 +59,7 @@ By default, SearchWP Live Ajax Search uses the default SearchWP Search Engine if
 
 = How do I customize the results template =
 
-SearchWP Live Ajax Search uses a template loader. In the plugin folder you will find a `templates` folder which includes `search-results.php` — that is what's used out of the box to output search results. To customize that output, simply create a folder called `searchwp-live-search` **in your theme directory** and copy `search-results.php` into that folder. SearchWP Live Ajax Search will then *use that file* instead of the one that shipped with the plugin, and you can customize it as you would other theme template files.
+SearchWP Live Ajax Search uses a template loader. In the plugin folder you will find a `templates` folder which includes `search-results.php` — that is what's used out of the box to output search results. To customize that output, simply create a folder called `searchwp-live-ajax-search` **in your theme directory** and copy `search-results.php` into that folder. SearchWP Live Ajax Search will then *use that file* instead of the one that shipped with the plugin, and you can customize it as you would other theme template files.
 
 SearchWP Live Ajax Search also outputs two sets of styles. The primary set of styles simply preps the results wrapper to be positioned properly. The second set of styles controls the visual appearance. This abstraction was made to ensure customization is as straighforward as possible. You can disable the default 'theme' by dequeueing the applicable stylesheet, and you can also disable the foundational CSS as well. More information available in [the documentation](https://searchwp.com/docs/extensions/live-search/#customizing-results).
 
@@ -75,6 +75,15 @@ SearchWP Live Ajax Search uses a filter — <a href="https://searchwp.com/docs/
 4. SearchWP Live Ajax Search Widget Advanced
 
 == Changelog ==
+
+= 1.1.2 =
+* No longer limit results to built in post types
+* Added <code>results_destroy_on_blur</code> config option to prevent automatic removal of results window when clicking outside results pane
+
+= 1.1.1 =
+* Fixed an issue that prevented SearchWP Supplemental engines from showing up in the Widget config
+* Added French translation
+* Added Serbian translation
 
 = 1.1 =
 * Define default post statuses when using WordPress native search
@@ -103,6 +112,9 @@ SearchWP Live Ajax Search uses a filter — <a href="https://searchwp.com/docs/
 * Added escaping to permalink and post type name in the default results template (props justinsainton)
 * Utilize a WordPress core translated string instead of a custom one (props justinsainton)
 * Increase the priority for the get_search_form filter so as to accommodate existing filters
+
+= 1.0.2 =
+* Added Serbo-Croatian translation (props Andrijana Nikolic)
 
 = 1.0.1 =
 * Fixed a directory URL issue
